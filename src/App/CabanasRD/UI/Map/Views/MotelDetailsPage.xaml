@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="CabanasRD.UI.Map.Views.MotelDetailsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    ios:NavigationPage.HideNavigationBarSeparator="true"
+    BackgroundColor="#FFFFFF">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid RowSpacing="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="219" />
+                    <RowDefinition Height="296" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <!--  HEADER LAYOUT  -->
+                <yummy:PancakeView
+                    Grid.Row="0"
+                    BackgroundGradientEndColor="#F37335"
+                    BackgroundGradientStartColor="#FDC830"
+                    HorizontalOptions="FillAndExpand">
+                    <Grid Padding="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="140" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            Grid.ColumnSpan="2"
+                            Style="{DynamicResource Title}"
+                            Text="{Binding Name}" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.ColumnSpan="2"
+                            Style="{DynamicResource Subtitle}"
+                            Text="{Binding Distance}" />
+                        <Grid Grid.Row="2" Grid.Column="0">
+                            <Label
+                                Margin="10,0"
+                                Style="{DynamicResource CreditCardAllowedIcon}"
+                                Text="&#xf09d;"
+                                VerticalTextAlignment="Center" />
+                            <Label
+                                Margin="28,0,10,0"
+                                Style="{DynamicResource HeaderIndication}"
+                                Text="Acepta Tarjetas de Crédito"
+                                VerticalTextAlignment="Center" />
+                            <yummy:PancakeView
+                                BackgroundColor="#000000"
+                                CornerRadius="16"
+                                HeightRequest="38"
+                                HorizontalOptions="Start"
+                                Opacity="0.07"
+                                VerticalOptions="Center"
+                                WidthRequest="180" />
+                        </Grid>
+                        <Button
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Margin="0,0,-30,0"
+                            ImageSource="route"
+                            Style="{DynamicResource SeeRoute}"
+                            Text="Ver Ruta" />
+                    </Grid>
+                </yummy:PancakeView>
+                <ffimageloadingsvg:SvgCachedImage
+                    Grid.Row="0"
+                    Margin="0"
+                    Aspect="AspectFit"
+                    Source="resource://CabanasRD.Resources.Images.header_shape.svg"
+                    VerticalOptions="End" />
+                <!--  END OF HEADER LAYOUT  -->
+
+                <!--  PICS LAYOUT  -->
+                <CarouselView
+                    Grid.Row="1"
+                    Margin="20,10"
+                    IndicatorView="indicatorView"
+                    ItemsSource="{Binding Images}">
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <yummy:PancakeView
+                                Margin="0"
+                                Padding="0"
+                                BackgroundColor="LightGray"
+                                CornerRadius="30"
+                                IsClippedToBounds="True">
+                                <Image
+                                    Aspect="AspectFill"
+                                    HorizontalOptions="FillAndExpand"
+                                    Source="{Binding Url}"
+                                    VerticalOptions="FillAndExpand" />
+                            </yummy:PancakeView>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+                <IndicatorView
+                    x:Name="indicatorView"
+                    Grid.Row="2"
+                    IndicatorColor="LightGray"
+                    SelectedIndicatorColor="DarkGray" />
+                <!--  END OF PICS LAYOUT  -->
+                <!--  SERVICES LAYOUT  -->
+                <yummy:PancakeView
+                    Grid.Row="3"
+                    Margin="20,10"
+                    Padding="20,20,20,30"
+                    BackgroundGradientEndColor="#EEA849"
+                    BackgroundGradientStartColor="#F46B45"
+                    CornerRadius="20"
+                    HorizontalOptions="FillAndExpand">
+                    <StackLayout>
+                        <Label
+                            Margin="0,0,0,20"
+                            Style="{DynamicResource CardTitle}"
+                            Text="Precios" />
+                        <StackLayout BindableLayout.ItemsSource="{Binding Services, Mode=OneTime}" HorizontalOptions="Start">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="160" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label
+                                            Grid.Column="0"
+                                            Style="{DynamicResource CardDetail}"
+                                            Text="{Binding Name}"
+                                            VerticalOptions="Center" />
+                                        <Label
+                                            Grid.Column="1"
+                                            HorizontalOptions="Center"
+                                            Style="{DynamicResource CardBoldDetail}"
+                                            TextColor="#FFFFFF"
+                                            VerticalOptions="Center">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="RD$ " />
+                                                    <Span Text="{Binding Price, StringFormat='{0:N2}'}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <yummy:PancakeView
+                                            Grid.Column="1"
+                                            BackgroundColor="#000000"
+                                            CornerRadius="16"
+                                            HeightRequest="32"
+                                            Opacity="0.07" />
+                                    </Grid>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+                    </StackLayout>
+                </yummy:PancakeView>
+                <!--  END OF SERVICES LAYOUT  -->
+                <!--  PHONES LAYOUT  -->
+                <yummy:PancakeView
+                    Grid.Row="4"
+                    Margin="20,10"
+                    Padding="20,20,20,30"
+                    BackgroundGradientEndColor="#FFE374"
+                    BackgroundGradientStartColor="#F59302"
+                    CornerRadius="20"
+                    HorizontalOptions="FillAndExpand">
+                    <StackLayout>
+                        <Label
+                            Margin="0,0,0,20"
+                            Style="{DynamicResource CardTitle}"
+                            Text="Teléfonos" />
+                        <StackLayout BindableLayout.ItemsSource="{Binding Phones}" HorizontalOptions="Start">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label
+                                            Grid.Column="0"
+                                            Margin="10,0"
+                                            HorizontalOptions="Center"
+                                            Style="{DynamicResource CardBoldDetail}"
+                                            Text="{Binding Number}"
+                                            TextColor="#FFFFFF"
+                                            VerticalOptions="Center" />
+                                        <yummy:PancakeView
+                                            Grid.Column="0"
+                                            BackgroundColor="#000000"
+                                            CornerRadius="16"
+                                            HeightRequest="32"
+                                            Opacity="0.07" />
+                                    </Grid>
+
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+                    </StackLayout>
+                </yummy:PancakeView>
+                <!--  END OF PHONES LAYOUT  -->
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

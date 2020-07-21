@@ -1,0 +1,55 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="4.7.0.1080" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
+    <PackageReference Include="Prism.Unity.Forms" Version="7.2.0.1422" />
+    <PackageReference Include="Xamarin.Forms.GoogleMaps" Version="3.2.1" />
+    <PackageReference Include="Xamarin.Forms.PancakeView" Version="1.4.2" />
+    <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.Forms.Visual.Material" Version="4.7.0.1080" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Framework\" />
+    <Folder Include="UI\" />
+    <Folder Include="Framework\DataSources\" />
+    <Folder Include="UI\Map\" />
+    <Folder Include="UI\Map\Views\" />
+    <Folder Include="UI\Map\ViewModels\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Resources\Images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\CabanasRD.Data\CabanasRD.Data.csproj" />
+    <ProjectReference Include="..\..\Core\CabanasRD.Domain\CabanasRD.Domain.csproj" />
+    <ProjectReference Include="..\..\Core\CabanasRD.UseCases\CabanasRD.UseCases.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="GoogleMapStyles.json" />
+    <None Remove="Resources\Fonts\fa-brands-400.ttf" />
+    <None Remove="Resources\Fonts\fa-regular-400.ttf" />
+    <None Remove="Resources\Fonts\fa-solid-900.ttf" />
+    <None Remove="Resources\Images\header_shape.svg" />
+    <None Remove="Resources\Fonts\Roboto-Bold.ttf" />
+    <None Remove="Resources\Fonts\Roboto-Light.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="GoogleMapStyles.json" />
+    <EmbeddedResource Include="Resources\Fonts\fa-brands-400.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\fa-regular-400.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\fa-solid-900.ttf" />
+    <EmbeddedResource Include="Resources\Images\header_shape.svg" />
+    <EmbeddedResource Include="Resources\Fonts\Roboto-Bold.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\Roboto-Light.ttf" />
+  </ItemGroup>
+</Project>

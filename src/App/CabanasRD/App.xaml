@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<prism:PrismApplication
+    x:Class="CabanasRD.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="clr-namespace:Prism.Unity;assembly=Prism.Unity.Forms">
+    <Application.Resources>
+        <Style TargetType="NavigationPage">
+            <Setter Property="BarBackgroundColor" Value="#FDC830" />
+            <Setter Property="BarTextColor" Value="#FFFFFF" />
+        </Style>
+        <Style x:Key="TabStyle" TargetType="TabbedPage">
+            <Setter Property="BarBackgroundColor" Value="#FFFFFF" />
+            <Setter Property="SelectedTabColor" Value="#F59302" />
+            <Setter Property="UnselectedTabColor" Value="#95989A" />
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Roboto-Light" />
+        </Style>
+        <Style x:Key="Title" TargetType="Label">
+            <Setter Property="FontSize" Value="34" />
+            <Setter Property="TextColor" Value="#FFFFFF" />
+        </Style>
+        <Style x:Key="Subtitle" TargetType="Label">
+            <Setter Property="FontSize" Value="22" />
+            <Setter Property="TextColor" Value="#606060" />
+        </Style>
+        <Style x:Key="HeaderIndication" TargetType="Label">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="FontFamily" Value="Roboto-Bold" />
+            <Setter Property="TextColor" Value="#FFFFFF" />
+        </Style>
+        <Style x:Key="CreditCardAllowedIcon" TargetType="Label">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="FontFamily" Value="Font-Awesome-Solid" />
+            <Setter Property="TextColor" Value="#FFFFFF" />
+        </Style>
+
+        <Style x:Key="SeeRoute" TargetType="Button">
+            <Setter Property="HeightRequest" Value="48" />
+            <Setter Property="BackgroundColor" Value="#FFFFFF" />
+            <Setter Property="TextColor" Value="#F59302" />
+        </Style>
+        <Style x:Key="CardTitle" TargetType="Label">
+            <Setter Property="FontFamily" Value="Roboto-Bold" />
+            <Setter Property="FontSize" Value="27" />
+            <Setter Property="TextColor" Value="#FFFFFF" />
+        </Style>
+        <Style x:Key="CardBoldDetail" TargetType="Label">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontFamily" Value="Roboto-Bold" />
+            <Setter Property="TextColor" Value="#FFFFFF" />
+        </Style>
+        <Style x:Key="CardDetail" TargetType="Label">
+            <Setter Property="TextColor" Value="#FFFFFF" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="LineBreakMode" Value="TailTruncation" />
+        </Style>
+    </Application.Resources>
+</prism:PrismApplication>
