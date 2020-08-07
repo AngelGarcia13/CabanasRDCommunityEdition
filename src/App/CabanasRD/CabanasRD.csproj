@@ -17,7 +17,7 @@
     <PackageReference Include="Xamarin.Forms.GoogleMaps" Version="3.2.1" />
     <PackageReference Include="Xamarin.Forms.PancakeView" Version="1.4.2" />
     <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />
-    <PackageReference Include="Xamarin.Forms.Visual.Material" Version="4.7.0.1080" />
+    <PackageReference Include="Xamarin.Forms.GoogleMaps.Bindings" Version="2.2.0" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Framework\" />
@@ -28,6 +28,9 @@
     <Folder Include="UI\Map\ViewModels\" />
     <Folder Include="Resources\" />
     <Folder Include="Resources\Images\" />
+    <Folder Include="UI\Info\" />
+    <Folder Include="UI\Info\ViewModels\" />
+    <Folder Include="UI\Info\Views\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Core\CabanasRD.Data\CabanasRD.Data.csproj" />

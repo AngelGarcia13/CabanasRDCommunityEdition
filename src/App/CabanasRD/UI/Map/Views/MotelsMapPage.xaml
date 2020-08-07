@@ -3,6 +3,8 @@
     x:Class="CabanasRD.UI.Map.Views.MotelsMapPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:b="http://prismlibrary.com"
+    xmlns:bindings="clr-namespace:Xamarin.Forms.GoogleMaps.Bindings;assembly=Xamarin.Forms.GoogleMaps.Bindings"
     xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
@@ -12,19 +14,84 @@
                 HorizontalOptions="FillAndExpand"
                 InfoWindowClicked="InfoWindowClicked"
                 InitialCameraUpdate="18.7993522, -70.7474826, 7.5, 0, 0"
-                ItemsSource="{Binding Locations}"
                 MapType="Street"
+                SelectedPin="{Binding SelectedPin}"
                 VerticalOptions="FillAndExpand">
-                <maps:Map.ItemTemplate>
-                    <DataTemplate>
-                        <maps:Pin
-                            Address="(Presione para ver detalles)"
-                            Icon="{Binding Icon}"
-                            Label="{Binding Motel.Name}"
-                            Position="{Binding Position}" />
-                    </DataTemplate>
-                </maps:Map.ItemTemplate>
+                <maps:Map.Behaviors>
+                    <bindings:BindingPinsBehavior Value="{Binding Pins}" />
+                </maps:Map.Behaviors>
             </maps:Map>
+            <!--  SEARCH RESULTS LAYOUT  -->
+            <StackLayout
+                BackgroundColor="#F8F8F8"
+                HorizontalOptions="FillAndExpand"
+                IsVisible="{Binding IsSearching}"
+                VerticalOptions="FillAndExpand">
+                <CollectionView
+                    Margin="20,120,20,0"
+                    ItemsSource="{Binding SearchResultLocations}"
+                    SelectedItem="{Binding SelectedLocation}"
+                    SelectionMode="Single">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="70" />
+                                    <RowDefinition Height="Auto" />
+
+                                </Grid.RowDefinitions>
+                                <Label
+                                    Grid.Row="0"
+                                    FontSize="20"
+                                    Text="{Binding Motel.Name}"
+                                    TextColor="#F59302"
+                                    VerticalTextAlignment="Center" />
+                                <BoxView
+                                    Grid.Row="1"
+                                    BackgroundColor="#BFBFBF"
+                                    HeightRequest="1" />
+                            </Grid>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+            <!--  END SEARCH RESULTS LAYOUT  -->
+
+            <!--  SEARCH BAR  -->
+            <Frame
+                Margin="10,50"
+                Padding="0"
+                BackgroundColor="#FFFFFF"
+                CornerRadius="20"
+                HasShadow="False"
+                VerticalOptions="Start">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="40" />
+                    </Grid.ColumnDefinitions>
+                    <Entry
+                        Grid.Column="0"
+                        Margin="0,0,0,-2"
+                        BackgroundColor="#FFFFFF"
+                        Text="{Binding SearchText}">
+                        <Entry.Behaviors>
+                            <b:EventToCommandBehavior Command="{Binding TextSearchChangedCommand}" EventName="TextChanged" />
+                        </Entry.Behaviors>
+                    </Entry>
+                    <Image Grid.Column="1" Margin="0,0,15,0">
+                        <Image.Source>
+                            <FontImageSource
+                                FontFamily="Font-Awesome-Solid"
+                                Glyph="&#xf002;"
+                                Color="#FFC670" />
+                        </Image.Source>
+                    </Image>
+                </Grid>
+            </Frame>
+            <!--  END SEARCH BAR  -->
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>
