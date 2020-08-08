@@ -10,6 +10,8 @@ using CabanasRD.Data.Motels;
 using CabanasRD.UseCases.Motels;
 using CabanasRD.UI.Main.Views;
 using CabanasRD.UI.Main.ViewModels;
+using CabanasRD.UI.Info.Views;
+using CabanasRD.UI.Info.ViewModels;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace CabanasRD
@@ -34,6 +36,7 @@ namespace CabanasRD
             containerRegistry.RegisterForNavigation<MainTabbedPage, MainTabbedPageViewModel>();
             containerRegistry.RegisterForNavigation<MotelsMapPage, MotelsMapPageViewModel>();
             containerRegistry.RegisterForNavigation<MotelDetailsPage, MotelDetailsPageViewModel>();
+            containerRegistry.RegisterForNavigation<InfoPage, InfoPageViewModel>();
 
             //Repositories & Data sources
             containerRegistry.Register<MotelsRepository>();

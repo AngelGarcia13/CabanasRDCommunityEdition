@@ -68,6 +68,7 @@
                             Grid.Row="2"
                             Grid.Column="1"
                             Margin="0,0,-30,0"
+                            Command="{Binding NavigateToLocationCommand}"
                             ImageSource="route"
                             Style="{DynamicResource SeeRoute}"
                             Text="Ver Ruta" />

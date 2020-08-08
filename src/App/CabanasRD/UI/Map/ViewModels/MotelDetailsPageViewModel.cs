@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using CabanasRD.Domain.Motels;
 using CabanasRD.UI.ViewModels;
+using Prism.Commands;
 using Prism.Navigation;
+using Xamarin.Essentials;
 
 namespace CabanasRD.UI.Map.ViewModels
 {
@@ -12,6 +15,7 @@ namespace CabanasRD.UI.Map.ViewModels
         public ObservableCollection<MotelImage> Images { get; set; }
         public ObservableCollection<MotelPhone> Phones { get; set; }
         public ObservableCollection<MotelService> Services { get; set; }
+        public DelegateCommand NavigateToLocationCommand { get; set; }
         private string name;
         public string Name
         {
@@ -30,6 +34,7 @@ namespace CabanasRD.UI.Map.ViewModels
             Images = new ObservableCollection<MotelImage>();
             Services = new ObservableCollection<MotelService>();
             Phones = new ObservableCollection<MotelPhone>();
+            NavigateToLocationCommand = new DelegateCommand(async () => await NavigateToLocation());
         }
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
@@ -49,6 +54,21 @@ namespace CabanasRD.UI.Map.ViewModels
             foreach (var item in Motel.Services)
             {
                 Services.Add(item);
+            }
+        }
+
+        public async Task NavigateToLocation()
+        {
+            var location = new Location(Motel.Latitude, Motel.Longitude);
+            var options = new MapLaunchOptions { NavigationMode = Xamarin.Essentials.NavigationMode.Driving };
+
+            try
+            {
+                await Xamarin.Essentials.Map.OpenAsync(location, options);
+            }
+            catch (Exception ex)
+            {
+                // No map application available to open or placemark can not be located
             }
         }
     }

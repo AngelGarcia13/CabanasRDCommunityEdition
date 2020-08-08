@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="CabanasRD.UI.Info.Views.InfoPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    ios:Page.UseSafeArea="true">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Label
+                    Grid.Row="0"
+                    Margin="10,50,10,50"
+                    FontFamily="Roboto-Bold"
+                    FontSize="24"
+                    HorizontalTextAlignment="Center"
+                    Text="CabañasRD Community Edition"
+                    TextColor="#848484" />
+                <Image
+                    Grid.Row="1"
+                    Aspect="AspectFit"
+                    Source="dotnetdo" />
+                <Label
+                    Grid.Row="2"
+                    Margin="10,80,10,0"
+                    FontFamily="Roboto-Light"
+                    FontSize="16"
+                    HorizontalTextAlignment="Center"
+                    Text="Hecho con amor por la comunidad de @dotnetdo"
+                    TextColor="#848484" />
+                <yummy:PancakeView
+                    Grid.Row="3"
+                    Margin="20,10"
+                    Padding="20,20,20,30"
+                    BackgroundGradientEndColor="#EEA849"
+                    BackgroundGradientStartColor="#F46B45"
+                    CornerRadius="20"
+                    HorizontalOptions="FillAndExpand">
+                    <Label
+                        FontFamily="Roboto-Light"
+                        FontSize="16"
+                        HorizontalTextAlignment="Start"
+                        LineHeight="2"
+                        Text="Xamarin.Forms &#10; Xamarin.Essentials &#10; Prism.Unity.Forms &#10; Xamarin.Forms.GoogleMaps &#10; Xamarin.Forms.PancakeView &#10; Xamarin.FFImageLoading.Svg.Forms &#10; Xamarin.Forms.GoogleMaps.Bindings"
+                        TextColor="#FFFFFF" />
+                </yummy:PancakeView>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

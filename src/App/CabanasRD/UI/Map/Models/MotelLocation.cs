@@ -8,7 +8,6 @@ namespace CabanasRD.UI.Map.Models
     public class MotelLocation
     {
         public Motel Motel { get; set; }
-        public Position Position { get; set; }
-        public BitmapDescriptor Icon { get; set; }
+        public Pin Pin { get; set; }
     }
 }

@@ -4,6 +4,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:info="clr-namespace:CabanasRD.UI.Info.Views"
     xmlns:mapViews="clr-namespace:CabanasRD.UI.Map.Views"
     android:TabbedPage.ToolbarPlacement="Bottom"
     NavigationPage.HasNavigationBar="False"
@@ -14,10 +15,10 @@
                 <FontImageSource FontFamily="Font-Awesome-Solid" Glyph="&#xf5a0;" />
             </mapViews:MotelsMapPage.IconImageSource>
         </mapViews:MotelsMapPage>
-        <ContentPage Title="Información" Visual="Material">
+        <info:InfoPage Title="Información" Visual="Material">
             <ContentPage.IconImageSource>
                 <FontImageSource FontFamily="Font-Awesome-Solid" Glyph="&#xf05a;" />
             </ContentPage.IconImageSource>
-        </ContentPage>
+        </info:InfoPage>
     </TabbedPage.Children>
 </TabbedPage>
