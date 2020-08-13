@@ -24,7 +24,7 @@ namespace CabanasRD.Framework.DataSources
         {
             try
             {
-                var cabanasResponse = await _cabanasAPI.GetMotels(Configs.AppSettingsConstants.ApiKey);
+                var cabanasResponse = await _cabanasAPI.GetMotels(Helpers.Secrets.ApiKey);
 
                 return _mapper.Map<List<APIs.Models.MotelResponse>, List<Domain.Motels.Motel>>(cabanasResponse);
             }
