@@ -18,6 +18,12 @@
     <PackageReference Include="Xamarin.Forms.PancakeView" Version="1.4.2" />
     <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.Forms.GoogleMaps.Bindings" Version="2.2.0" />
+    <PackageReference Include="refit" Version="5.1.67" />
+    <PackageReference Include="AutoMapper" Version="10.0.0" />
+    <PackageReference Include="Mobile.BuildTools" Version="1.4.0.638">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Framework\" />
@@ -31,6 +37,10 @@
     <Folder Include="UI\Info\" />
     <Folder Include="UI\Info\ViewModels\" />
     <Folder Include="UI\Info\Views\" />
+    <Folder Include="Configs\" />
+    <Folder Include="Framework\APIs\" />
+    <Folder Include="Framework\APIs\Models\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Core\CabanasRD.Data\CabanasRD.Data.csproj" />
