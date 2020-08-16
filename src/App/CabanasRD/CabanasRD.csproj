@@ -24,6 +24,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Acr.UserDialogs" Version="7.1.0.446" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Framework\" />
