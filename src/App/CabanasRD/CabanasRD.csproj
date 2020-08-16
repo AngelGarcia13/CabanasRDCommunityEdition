@@ -41,6 +41,8 @@
     <Folder Include="Framework\APIs\" />
     <Folder Include="Framework\APIs\Models\" />
     <Folder Include="Helpers\" />
+    <Folder Include="Messages\" />
+    <Folder Include="Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Core\CabanasRD.Data\CabanasRD.Data.csproj" />
