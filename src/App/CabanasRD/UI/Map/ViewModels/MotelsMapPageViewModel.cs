@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using Acr.UserDialogs;
 using CabanasRD.Domain.Motels;
 using CabanasRD.Extensions;
+using CabanasRD.Messages;
 using CabanasRD.UI.Map.Models;
 using CabanasRD.UI.ViewModels;
 using CabanasRD.UseCases.Motels;
@@ -105,10 +107,15 @@ namespace CabanasRD.UI.Map.ViewModels
         //TODO: [Enhancement] Avoid async void calls!
         private async Task LoadMotelsLocations()
         {
+            IsBusy = true;
             try
             {
-                // TODO: Add an activity indicator while loading the information
-                Motels = await _getAllMotels.Invoke();
+                using (UserDialogs.Instance.Loading(Informations.Loading, null, null, true))
+                {
+                    // TODO: Add an activity indicator while loading the information
+                    Motels = await _getAllMotels.Invoke();
+                }
+
             }
             catch (Exception exception)
             {
@@ -144,7 +151,7 @@ namespace CabanasRD.UI.Map.ViewModels
 
         private void Completed()
         {
-
+            IsBusy = false;
             foreach (var item in Motels)
             {
                 var pinItem = new Pin
@@ -166,6 +173,7 @@ namespace CabanasRD.UI.Map.ViewModels
         }
         private void ErrorHandler(Exception exception)
         {
+            IsBusy = false;
             _dialogService.DisplayAlertAsync
                 (
                     CommonDisplayAlertMessages.Error,
