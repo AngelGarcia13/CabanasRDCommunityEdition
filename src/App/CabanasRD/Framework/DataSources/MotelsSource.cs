@@ -26,7 +26,7 @@ namespace CabanasRD.Framework.DataSources
             {
                 var cabanasResponse = await _cabanasAPI.GetMotels(Helpers.Secrets.ApiKey);
 
-                return _mapper.Map<List<APIs.Models.MotelResponse>, List<Domain.Motels.Motel>>(cabanasResponse);
+                return _mapper.Map<List<APIs.Models.MotelResponse>, List<Motel>>(cabanasResponse);
             }
             catch (ApiException ex)
             {
