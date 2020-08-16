@@ -77,7 +77,8 @@ namespace CabanasRD
                .ForMember(dest => dest.Latitude, source => source.MapFrom(src => double.Parse(src.Latitude)))
                .ForMember(dest => dest.Longitude, source => source.MapFrom(src => double.Parse(src.Longitude)))
                .ForMember(dest => dest.Services, source => source.MapFrom(src => src.MotelServices))
-               .ForMember(dest => dest.Images, source => source.MapFrom(src => src.Images.Select(i => new Domain.Motels.MotelImage{
+               .ForMember(dest => dest.Images, source => source.MapFrom(src => src.Images.Select(i => new Domain.Motels.MotelImage
+               {
                    Url = $"{i}.{imagesExtension}"
                })))
                .ForMember(dest => dest.Phones, source => source.MapFrom(src => src.Phones.Select(p => new Domain.Motels.MotelPhone
