@@ -12,6 +12,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CabanasRD.XUnitTests", "Tests\CabanasRD.XUnitTests\CabanasRD.XUnitTests.csproj", "{E6285AFF-138B-4513-A5FD-93742F7AED62}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{27826693-7F7E-41EC-8676-42F84C8931D0}"
+	ProjectSection(SolutionItems) = preProject
+		App\MotelsMapPageViewModel.cs = App\MotelsMapPageViewModel.cs
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{56A51795-B524-4BA9-AF41-41E4106618C1}"
 EndProject
