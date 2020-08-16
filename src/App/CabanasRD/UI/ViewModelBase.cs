@@ -18,6 +18,13 @@ namespace CabanasRD.UI.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
+        private string _isBusy;
+        public string IsBusy
+        {
+            get { return _isBusy; }
+            set { SetProperty(ref _isBusy, value); }
+        }
+
         public ViewModelBase(INavigationService navigationService)
         {
             NavigationService = navigationService;
