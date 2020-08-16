@@ -18,8 +18,8 @@ namespace CabanasRD.UI.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
-        private string _isBusy;
-        public string IsBusy
+        private bool _isBusy;
+        public bool IsBusy
         {
             get { return _isBusy; }
             set { SetProperty(ref _isBusy, value); }
