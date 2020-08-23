@@ -17,6 +17,9 @@ using CabanasRD.Framework.APIs;
 using AutoMapper;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace CabanasRD
@@ -26,6 +29,16 @@ namespace CabanasRD
         public App() : this(null) { }
 
         public App(IPlatformInitializer initializer) : base(initializer) { }
+
+        protected override void OnStart()
+        {
+            base.OnStart();
+
+            AppCenter.Start($"ios={Helpers.Secrets.AppCenterKeyiOS};" +
+                  "uwp={Your UWP App secret here};" +
+                  $"android={Helpers.Secrets.AppCenterKeyAndroid}",
+                  typeof(Analytics), typeof(Crashes));
+        }
 
         protected override async void OnInitialized()
         {
