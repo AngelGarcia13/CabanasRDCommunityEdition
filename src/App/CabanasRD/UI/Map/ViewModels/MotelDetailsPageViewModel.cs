@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using CabanasRD.Domain.Motels;
 using CabanasRD.UI.ViewModels;
+using Microsoft.AppCenter.Analytics;
 using Prism.Commands;
 using Prism.Navigation;
 using Xamarin.Essentials;
@@ -55,6 +57,9 @@ namespace CabanasRD.UI.Map.ViewModels
             {
                 Services.Add(item);
             }
+
+            var analyticsData = new Dictionary<string, string> { { "Name", Motel.Name } };
+            Analytics.TrackEvent("Motel selected", analyticsData);
         }
 
         public async Task NavigateToLocation()
