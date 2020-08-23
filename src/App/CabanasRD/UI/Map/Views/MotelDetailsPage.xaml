@@ -6,14 +6,22 @@
     xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:converters="clr-namespace:CabanasRD.UI.Map.Converters"
     ios:NavigationPage.HideNavigationBarSeparator="true"
     BackgroundColor="#FFFFFF">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:CollectionHasElementsConverter x:Key="CollectionHasElementsConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
         <ScrollView>
             <Grid RowSpacing="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="219" />
-                    <RowDefinition Height="296" />
+                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
@@ -86,8 +94,10 @@
                 <CarouselView
                     Grid.Row="1"
                     Margin="20,10"
+                    HeightRequest="296"
                     IndicatorView="indicatorView"
-                    ItemsSource="{Binding Images}">
+                    ItemsSource="{Binding Images}"
+                    IsVisible="{Binding Images.Count, Converter={StaticResource CollectionHasElementsConverter}}">
                     <CarouselView.ItemTemplate>
                         <DataTemplate>
                             <yummy:PancakeView
@@ -109,7 +119,8 @@
                     x:Name="indicatorView"
                     Grid.Row="2"
                     IndicatorColor="LightGray"
-                    SelectedIndicatorColor="DarkGray" />
+                    SelectedIndicatorColor="DarkGray"
+                    IsVisible="{Binding Images.Count, Converter={StaticResource CollectionHasElementsConverter}}" />
                 <!--  END OF PICS LAYOUT  -->
                 <!--  SERVICES LAYOUT  -->
                 <yummy:PancakeView
@@ -126,6 +137,29 @@
                             Style="{DynamicResource CardTitle}"
                             Text="Precios" />
                         <StackLayout BindableLayout.ItemsSource="{Binding Services, Mode=OneTime}" HorizontalOptions="Start">
+                            <BindableLayout.EmptyViewTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label Grid.Column="0"
+                                               Margin="10,0"
+                                               FontSize="Medium"
+                                               HorizontalOptions="Center"
+                                               Style="{DynamicResource CardBoldDetail}"
+                                               Text="Precios de servicios no disponibles."
+                                               TextColor="#FFFFFF"
+                                               VerticalOptions="Center" />
+                                        <yummy:PancakeView Grid.Column="0"
+                                                           BackgroundColor="#000000"
+                                                           CornerRadius="16"
+                                                           HeightRequest="32"
+                                                           Opacity="0.07" />
+                                    </Grid>
+                                </DataTemplate>
+                            </BindableLayout.EmptyViewTemplate>
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
                                     <Grid>
@@ -179,6 +213,29 @@
                             Style="{DynamicResource CardTitle}"
                             Text="Teléfonos" />
                         <StackLayout BindableLayout.ItemsSource="{Binding Phones}" HorizontalOptions="Start">
+                            <BindableLayout.EmptyViewTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label Grid.Column="0"
+                                               Margin="10,0"
+                                               FontSize="Medium"
+                                               HorizontalOptions="Center"
+                                               Style="{DynamicResource CardBoldDetail}"
+                                               Text="Teléfonos no disponibles."
+                                               TextColor="#FFFFFF"
+                                               VerticalOptions="Center" />
+                                        <yummy:PancakeView Grid.Column="0"
+                                                           BackgroundColor="#000000"
+                                                           CornerRadius="16"
+                                                           HeightRequest="32"
+                                                           Opacity="0.07" />
+                                    </Grid>
+                                </DataTemplate>
+                            </BindableLayout.EmptyViewTemplate>
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
                                     <Grid>
