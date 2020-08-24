@@ -43,8 +43,9 @@ namespace CabanasRD.UI.Map.ViewModels
             base.OnNavigatedTo(parameters);
             Motel = parameters.GetValue<Motel>("MotelDetails");
             Name = Motel.Name;
-            //TODO: Get the current user's position and calculate distance
-            Distance = "1.2 KMs";
+            //DONE: Get the current user's position and calculate distance 
+            GetDistance(Motel);
+
             foreach (var item in Motel.Images)
             {
                 Images.Add(item);
@@ -61,7 +62,25 @@ namespace CabanasRD.UI.Map.ViewModels
             var analyticsData = new Dictionary<string, string> { { "Name", Motel.Name } };
             Analytics.TrackEvent("Motel selected", analyticsData);
         }
+        public async void GetDistance(Motel motel)
+        {
+            try
+            {
+                //Get the current user's position
+                var userLocation = await Geolocation.GetLastKnownLocationAsync();
+                var fromLocation = new Location(userLocation.Latitude, userLocation.Longitude);
+                var toLocation = new Location(motel.Latitude, motel.Longitude);
+                //Calculate distance
+                double distance = fromLocation.CalculateDistance(toLocation, DistanceUnits.Kilometers);
+                Distance = $"{Math.Round(distance)} KMs";
+            }
+            catch (Exception ex)
+            {
+                // Handle exception when the distance is unknown
+            }
 
+
+        }
         public async Task NavigateToLocation()
         {
             var location = new Location(Motel.Latitude, Motel.Longitude);
