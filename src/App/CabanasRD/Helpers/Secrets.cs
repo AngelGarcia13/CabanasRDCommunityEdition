@@ -1,10 +1,10 @@
 ﻿using System;
 namespace CabanasRD.Helpers
 {
-    public class Helpers
+    public static class Secrets
     {
-        public Helpers()
-        {
-        }
+        public static string ApiKey = "";
+        public static object AppCenterKeyiOS = "";
+        public static object AppCenterKeyAndroid = "";
     }
 }
