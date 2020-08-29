@@ -1,5 +1,5 @@
 ﻿using System;
-namespace CabanasRD
+namespace CabanasRD.Messages
 {
     public static class CommonDisplayAlertMessages
     {
