@@ -24,6 +24,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Acr.UserDialogs" Version="7.1.0.446" />
     <PackageReference Include="Microsoft.AppCenter.Analytics" Version="3.4.0" />
     <PackageReference Include="Microsoft.AppCenter.Crashes" Version="3.4.0" />
   </ItemGroup>
@@ -43,6 +44,8 @@
     <Folder Include="Framework\APIs\" />
     <Folder Include="Framework\APIs\Models\" />
     <Folder Include="Helpers\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Resources\Messages\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Core\CabanasRD.Data\CabanasRD.Data.csproj" />

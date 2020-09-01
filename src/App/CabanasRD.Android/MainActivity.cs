@@ -10,6 +10,7 @@ using Prism;
 using Prism.Ioc;
 using FFImageLoading.Forms.Platform;
 using Xamarin.Forms;
+using Acr.UserDialogs;
 
 namespace CabanasRD.Droid
 {
@@ -30,6 +31,7 @@ namespace CabanasRD.Droid
 
             Xamarin.FormsGoogleMaps.Init(this, savedInstanceState);
             CachedImageRenderer.Init(true);
+            UserDialogs.Init(this);
 
             LoadApplication(new App(new AndroidInitializer()));
 

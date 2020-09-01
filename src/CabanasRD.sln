@@ -1,8 +1,6 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CabanasRD.Android", "App\CabanasRD.Android\CabanasRD.Android.csproj", "{A0394B14-3E67-409F-850C-C63541341B01}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CabanasRD.iOS", "App\CabanasRD.iOS\CabanasRD.iOS.csproj", "{3A224F40-1524-4A96-AF79-C197E382EF19}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CabanasRD.UITests", "Tests\CabanasRD.UITests\CabanasRD.UITests.csproj", "{B47FE63C-12B9-4243-B48B-69783C877B24}"
@@ -23,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CabanasRD.Data", "Core\Caba
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CabanasRD.UseCases", "Core\CabanasRD.UseCases\CabanasRD.UseCases.csproj", "{23DB08E4-5DC7-48C8-B877-1C03900146C8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CabanasRD.Android", "App\CabanasRD.Android\CabanasRD.Android.csproj", "{A0394B14-3E67-409F-850C-C63541341B01}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,18 +33,6 @@ Global
 		Release|iPhone = Release|iPhone
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A0394B14-3E67-409F-850C-C63541341B01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A0394B14-3E67-409F-850C-C63541341B01}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A0394B14-3E67-409F-850C-C63541341B01}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A0394B14-3E67-409F-850C-C63541341B01}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A0394B14-3E67-409F-850C-C63541341B01}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
-		{A0394B14-3E67-409F-850C-C63541341B01}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
-		{A0394B14-3E67-409F-850C-C63541341B01}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{A0394B14-3E67-409F-850C-C63541341B01}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
-		{A0394B14-3E67-409F-850C-C63541341B01}.Debug|iPhone.ActiveCfg = Debug|Any CPU
-		{A0394B14-3E67-409F-850C-C63541341B01}.Debug|iPhone.Build.0 = Debug|Any CPU
-		{A0394B14-3E67-409F-850C-C63541341B01}.Release|iPhone.ActiveCfg = Release|Any CPU
-		{A0394B14-3E67-409F-850C-C63541341B01}.Release|iPhone.Build.0 = Release|Any CPU
 		{3A224F40-1524-4A96-AF79-C197E382EF19}.Debug|Any CPU.ActiveCfg = Debug|iPhoneSimulator
 		{3A224F40-1524-4A96-AF79-C197E382EF19}.Debug|Any CPU.Build.0 = Debug|iPhoneSimulator
 		{3A224F40-1524-4A96-AF79-C197E382EF19}.Release|Any CPU.ActiveCfg = Release|iPhoneSimulator
@@ -129,15 +117,27 @@ Global
 		{23DB08E4-5DC7-48C8-B877-1C03900146C8}.Debug|iPhone.Build.0 = Debug|Any CPU
 		{23DB08E4-5DC7-48C8-B877-1C03900146C8}.Release|iPhone.ActiveCfg = Release|Any CPU
 		{23DB08E4-5DC7-48C8-B877-1C03900146C8}.Release|iPhone.Build.0 = Release|Any CPU
+		{A0394B14-3E67-409F-850C-C63541341B01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0394B14-3E67-409F-850C-C63541341B01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0394B14-3E67-409F-850C-C63541341B01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0394B14-3E67-409F-850C-C63541341B01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0394B14-3E67-409F-850C-C63541341B01}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{A0394B14-3E67-409F-850C-C63541341B01}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{A0394B14-3E67-409F-850C-C63541341B01}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{A0394B14-3E67-409F-850C-C63541341B01}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{A0394B14-3E67-409F-850C-C63541341B01}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{A0394B14-3E67-409F-850C-C63541341B01}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{A0394B14-3E67-409F-850C-C63541341B01}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{A0394B14-3E67-409F-850C-C63541341B01}.Release|iPhone.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9D2E14BC-1FA3-400B-8345-41D8B90334E2} = {27826693-7F7E-41EC-8676-42F84C8931D0}
-		{A0394B14-3E67-409F-850C-C63541341B01} = {27826693-7F7E-41EC-8676-42F84C8931D0}
 		{3A224F40-1524-4A96-AF79-C197E382EF19} = {27826693-7F7E-41EC-8676-42F84C8931D0}
 		{B47FE63C-12B9-4243-B48B-69783C877B24} = {BC1A5396-3A78-44C6-942E-C15D701E031E}
 		{E6285AFF-138B-4513-A5FD-93742F7AED62} = {BC1A5396-3A78-44C6-942E-C15D701E031E}
 		{4119B139-9C7A-4049-B86B-E75EFF8B754C} = {56A51795-B524-4BA9-AF41-41E4106618C1}
 		{FFEA01C3-36FF-4E83-A964-316A80C0C2D1} = {56A51795-B524-4BA9-AF41-41E4106618C1}
 		{23DB08E4-5DC7-48C8-B877-1C03900146C8} = {56A51795-B524-4BA9-AF41-41E4106618C1}
+		{A0394B14-3E67-409F-850C-C63541341B01} = {27826693-7F7E-41EC-8676-42F84C8931D0}
 	EndGlobalSection
 EndGlobal

@@ -2,11 +2,17 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
+using Acr.UserDialogs;
+using CabanasRD.Domain.Motels;
+using CabanasRD.Extensions;
+using CabanasRD.Messages;
 using CabanasRD.UI.Map.Models;
 using CabanasRD.UI.ViewModels;
 using CabanasRD.UseCases.Motels;
 using Prism.Commands;
 using Prism.Navigation;
+using Prism.Services;
 using Xamarin.Forms.GoogleMaps;
 
 namespace CabanasRD.UI.Map.ViewModels
@@ -14,7 +20,9 @@ namespace CabanasRD.UI.Map.ViewModels
     public class MotelsMapPageViewModel : ViewModelBase
     {
         public ObservableCollection<MotelLocation> Locations { get; set; }
+        public IReadOnlyList<Motel> Motels { get; set; }
         private IList<MotelLocation> searchResultLocations;
+        private IPageDialogService _dialogService;
         public IList<MotelLocation> SearchResultLocations
         {
             get { return searchResultLocations; }
@@ -50,12 +58,13 @@ namespace CabanasRD.UI.Map.ViewModels
                 SetProperty(ref searchText, value);
             }
         }
-        
+
         private MotelLocation selectedLocation;
         public MotelLocation SelectedLocation
         {
             get { return selectedLocation; }
-            set {
+            set
+            {
                 SetProperty(ref selectedLocation, value);
                 if (selectedLocation != null)
                 {
@@ -64,18 +73,20 @@ namespace CabanasRD.UI.Map.ViewModels
                 }
             }
         }
-        
 
-        public MotelsMapPageViewModel(INavigationService navigationService, GetAllMotels getAllMotels)
+
+        public MotelsMapPageViewModel(INavigationService navigationService, IPageDialogService dialogService, GetAllMotels getAllMotels)
             : base(navigationService)
         {
             _getAllMotels = getAllMotels;
+            _dialogService = dialogService;
             Title = "Cabañas";
             Locations = new ObservableCollection<MotelLocation>();
+            Motels = new List<Motel>();
             Pins = new ObservableCollection<Pin>();
             SearchResultLocations = new List<MotelLocation>();
             TextSearchChangedCommand = new DelegateCommand(TextSearchChanged);
-            LoadMotelsLocations();
+            LoadMotelsLocations().Await(Completed, ErrorHandler);
         }
 
         private void TextSearchChanged()
@@ -94,10 +105,54 @@ namespace CabanasRD.UI.Map.ViewModels
         }
 
         //TODO: [Enhancement] Avoid async void calls!
-        private async void LoadMotelsLocations()
+        private async Task LoadMotelsLocations()
         {
+            IsBusy = true;
+            try
+            {
+                using (UserDialogs.Instance.Loading(Informations.Loading, null, null, true))
+                {
+                    // TODO: Add an activity indicator while loading the information
+                    Motels = await _getAllMotels.Invoke();
+                }
 
-            foreach (var item in await _getAllMotels.Invoke())
+            }
+            catch (Exception exception)
+            {
+                // TODO: Register Crash and Exceptions into AppCenter
+                Console.WriteLine(exception.Message);
+
+                var dialogServiceResult = await _dialogService
+                    .DisplayAlertAsync
+                    (
+                        CommonDisplayAlertMessages.Warning,
+                        Messages.Warning.ThereIsAnErrorGettingTheInformationFromTheServer,
+                        CommonDisplayAlertMessages.TryAgain,
+                        CommonDisplayAlertMessages.No
+                    );
+
+                if (dialogServiceResult)
+                {
+                    await LoadMotelsLocations();
+                }
+                return;
+            }
+        }
+
+        public void InfoWindowSelected(Pin pin)
+        {
+            var motelDetails = Locations.FirstOrDefault(l => l.Pin.Equals(pin));
+            var navParams = new NavigationParameters
+            {
+                { "MotelDetails", motelDetails.Motel }
+            };
+            NavigationService.NavigateAsync("MotelDetailsPage", navParams);
+        }
+
+        private void Completed()
+        {
+            IsBusy = false;
+            foreach (var item in Motels)
             {
                 var pinItem = new Pin
                 {
@@ -112,19 +167,20 @@ namespace CabanasRD.UI.Map.ViewModels
                     Pin = pinItem,
                     Motel = item
                 });
-                
+
                 Pins.Add(pinItem);
             }
-
         }
-
-        public void InfoWindowSelected(Pin pin)
+        private void ErrorHandler(Exception exception)
         {
-            var motelDetails = Locations.FirstOrDefault(l => l.Pin.Equals(pin));
-            var navParams = new NavigationParameters();
-            navParams.Add("MotelDetails", motelDetails.Motel);
-            NavigationService.NavigateAsync("MotelDetailsPage", navParams);
-        }
+            IsBusy = false;
+            _dialogService.DisplayAlertAsync
+                (
+                    CommonDisplayAlertMessages.Error,
+                    Messages.Errors.IternarlServerError,
+                    CommonDisplayAlertMessages.OK
+                );
 
+        }
     }
 }
