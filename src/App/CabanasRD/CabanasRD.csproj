@@ -18,7 +18,7 @@
     <PackageReference Include="Xamarin.Forms.PancakeView" Version="1.4.2" />
     <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.Forms.GoogleMaps.Bindings" Version="2.2.0" />
-    <PackageReference Include="refit" Version="5.1.67" />
+    <PackageReference Include="refit" Version="7.2.22" />
     <PackageReference Include="AutoMapper" Version="10.0.0" />
     <PackageReference Include="Mobile.BuildTools" Version="1.4.0.638">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
